@@ -15,11 +15,11 @@ module.exports = (client) => {
         const command = require(`../../commands/${folder}/${file}`);
         commands.set(command.data.name, command);
         commandArray.push(command.data.toJSON());
-        console.log(`Command: ${command.data.name} est passé dans le handler.`);
+        console.log(`Command: ${command.data.name} has passed the handler.`);
       }
     }
 
-    const clientId = "1099066358894956545";
+    const clientId = "BOT_ID_HERE";
     const guildId = "YOUR_GUILD_ID_HERE"; //Don't forget to put your guild ID here
 
     const rest = new REST({ version: "9" }).setToken(process.env.token);
