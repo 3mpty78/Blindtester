@@ -1,0 +1,12 @@
+[
+    {
+        "questions": "YOUR_SONG_SENTENCE_GOES_HERE",
+        "answers": ["Answer1", "ANSWER1", "answer one", "ANSWER ONE", "answerone", "ANSWERONE"],
+        "final": "Answer 1"
+    },
+    {
+        "questions": "YOUR_SONG_SENTENCE_GOES_HERE",
+        "answers": ["Answer2", "ANSWER2", "answer two", "ANSWER TWO", "answertwo", "ANSWERTWO"],
+        "final": "Answer 2"
+    }
+]
