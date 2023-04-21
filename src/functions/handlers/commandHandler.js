@@ -19,7 +19,7 @@ module.exports = (client) => {
       }
     }
 
-    const clientId = "BOT_ID_HERE";
+    const clientId = "BOT_ID_HERE"; // Don't forget to put your bot ID here
     const guildId = "YOUR_GUILD_ID_HERE"; //Don't forget to put your guild ID here
 
     const rest = new REST({ version: "9" }).setToken(process.env.token);

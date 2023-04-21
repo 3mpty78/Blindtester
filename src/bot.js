@@ -24,7 +24,7 @@ for (const folder of functionFolder) {
     require(`./functions/${folder}/${file}`)(client);
 }
 
-const channel = "YOUR_CHENNEL_ID_HERE";
+const channel = "YOUR_CHANNEL_ID_HERE";
 const keywords = [];
 
 client.on("messageCreate", (message) => {
