@@ -1,0 +1,19 @@
+{
+  "name": "blindtester",
+  "version": "1.0.0",
+  "description": "Blindtest game discord bot using `discord.js v14.9.0`",
+  "main": "src/bot.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "keywords": [],
+  "author": "3mpty",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/rest": "^1.7.0",
+    "chalk": "^4.1.2",
+    "discord-api-types": "^0.37.39",
+    "discord.js": "^14.9.0",
+    "dotenv": "^16.0.3"
+  }
+}
