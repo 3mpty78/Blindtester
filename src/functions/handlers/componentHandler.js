@@ -1,7 +1,7 @@
 const { readdirSync } = require("fs");
 
 module.exports = (client) => {
-  client.componentHandler = async () => {
+  client.handleComponents = async () => {
     const componentFolders = readdirSync(`./src/components`);
     for (const folder of componentFolders) {
       const componentFiles = readdirSync(`./src/components/${folder}`).filter(
@@ -11,7 +11,7 @@ module.exports = (client) => {
       const { selectMenus } = client;
 
       switch (folder) {
-        case "selectMenu":
+        case "selectMenus":
           for (const file of componentFiles) {
             const menu = require(`../../components/${folder}/${file}`);
             selectMenus.set(menu.data.name, menu);

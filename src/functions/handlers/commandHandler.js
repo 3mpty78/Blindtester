@@ -1,9 +1,12 @@
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 const fs = require("fs");
+const { token } = process.env;
+
+const rest = new REST({ version: "9" }).setToken(token);
 
 module.exports = (client) => {
-  client.commandHandler = async () => {
+  client.handleCommands = async () => {
     const commandFolders = fs.readdirSync(`./src/commands`);
     for (const folder of commandFolders) {
       const commandFiles = fs
@@ -15,22 +18,19 @@ module.exports = (client) => {
         const command = require(`../../commands/${folder}/${file}`);
         commands.set(command.data.name, command);
         commandArray.push(command.data.toJSON());
-        console.log(`Command: ${command.data.name} has passed the handler.`);
+        console.log(`Command: ${command.data.name} successfuly handled.`);
       }
     }
 
-    const clientId = "BOT_ID_HERE"; // Don't forget to put your bot ID here
-    const guildId = "YOUR_GUILD_ID_HERE"; //Don't forget to put your guild ID here
-
-    const rest = new REST({ version: "9" }).setToken(process.env.token);
+    const clientId = "BOT_ID";
+    const guildId = "GUILD_ID";
 
     try {
       console.log("Scanning commands ...");
-
       await rest.put(Routes.applicationGuildCommands(clientId, guildId), {
         body: client.commandArray,
       });
-      console.log("Application successfuly loaded !");
+      console.log("Application loaded !");
     } catch (error) {
       console.error(error);
     }

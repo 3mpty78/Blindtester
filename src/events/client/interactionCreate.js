@@ -1,7 +1,8 @@
+const { InteractionType } = require("discord.js");
+
 module.exports = {
   name: "interactionCreate",
   async execute(interaction, client) {
-    // Checks if the interaction is a chat input command
     if (interaction.isChatInputCommand()) {
       const { commands } = client;
       const { commandName } = interaction;
@@ -13,16 +14,14 @@ module.exports = {
       } catch (error) {
         console.error(error);
         await interaction.reply({
-          content: `An error occured with this command ...`,
+          content: `An error occured with this command !`,
           ephemeral: true,
         });
       }
-
-      // Checks if the interaction is a selection menu
     } else if (interaction.isStringSelectMenu()) {
-      const { selectMenu } = client;
+      const { selectMenus } = client;
       const { customId } = interaction;
-      const menu = selectMenu.get(customId);
+      const menu = selectMenus.get(customId);
       if (!menu) return new Error("No code for this menu");
 
       try {

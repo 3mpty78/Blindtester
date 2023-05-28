@@ -13,9 +13,9 @@ module.exports = {
 
     // Checks if the user has the 'MODERATOR' role
 
-    if (
-      !interaction.member.roles.cache.some((role) => role.name === "MODERATOR")
-    ) {
+    const moderator = "MODERATOR_ROLE_ID";
+
+    if (!interaction.member.roles.cache.some((role) => role.id === moderator)) {
       interaction.reply({
         content:
           "Sorry, you must have the 'MODERATOR' role to use this command.",
@@ -66,6 +66,9 @@ module.exports = {
               .setDescription(`Congratulations to ${winner}`);
             congratsEmbed.setThumbnail(winner.displayAvatarURL());
             interaction.followUp({ embeds: [congratsEmbed] });
+
+            // Update scoreboard function
+            updateScoreboard(winner.username, 1);
           }
         })
         // Sends the 'Time's up' embed message after 15 seconds if no one has the answer

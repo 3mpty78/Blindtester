@@ -8,8 +8,8 @@ module.exports = {
     client.user.setPresence({
       activities: [
         {
-          type: ActivityType.Listening,
-          name: "everything",
+          type: ActivityType.Watching,
+          name: "Discord.js",
         },
       ],
       status: "online",

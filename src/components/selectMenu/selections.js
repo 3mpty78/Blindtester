@@ -2,9 +2,9 @@ module.exports = {
   data: {
     name: "selections",
   },
-  async execute(interaction, client) {
+  async execute(interaction) {
     await interaction.reply({
-      content: `You select: ${interaction.values[0]}`,
+      content: `You selected: ${interaction.values[0]}`,
     });
   },
 };

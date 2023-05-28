@@ -1,5 +1,6 @@
 require("dotenv").config();
-const { token } = process.env;
+const { token, databaseToken } = process.env;
+const { connect } = require("mongoose");
 const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const fs = require("fs");
 
@@ -11,9 +12,11 @@ const client = new Client({
     GatewayIntentBits.GuildMembers,
   ],
 });
+
 client.commands = new Collection();
-client.selectMenu = new Collection();
+client.selectMenus = new Collection();
 client.commandArray = [];
+client.modals = new Collection();
 
 const functionFolder = fs.readdirSync(`./src/functions`);
 for (const folder of functionFolder) {
@@ -24,19 +27,10 @@ for (const folder of functionFolder) {
     require(`./functions/${folder}/${file}`)(client);
 }
 
-const channel = "YOUR_CHANNEL_ID_HERE";
-const keywords = [];
-
-client.on("messageCreate", (message) => {
-  if (
-    message.channel.id === channel &&
-    keywords.some((keyword) => message.content.toLowerCase().includes(keyword))
-  ) {
-    message.channel.send("ANSWER_TO_YOUR_KEYWORDS");
-  }
-});
-
 client.handleEvents();
 client.handleCommands();
 client.handleComponents();
 client.login(token);
+(async () => {
+  await connect(databaseToken).catch(console.error);
+})();
